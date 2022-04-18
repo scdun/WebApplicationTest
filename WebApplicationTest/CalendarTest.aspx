@@ -1,38 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CalendarTest.aspx.cs" Inherits="WebApplicationTest.WebForm2" %>
-
+﻿<%@ Page Title="CalendarTest" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CalendarTest.aspx.cs" Inherits="WebApplicationTest.CalendarTest" %>
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+<asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            font-size: x-large;
-        }
-    </style>
-</head>
-<body>
-    <form id="form1" runat="server">
         <div style="font-size: large">
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PPAdbConnectionString %>" SelectCommand="SELECT * FROM [DocAppts]">
             </asp:SqlDataSource>
                 <asp:Panel ID="View1" runat="server">
-                    <span class="auto-style1">Welcome
-                    <asp:Label ID="LabelUNC" runat="server" Text="Label"></asp:Label>
+                    <span class="auto-style1" style="font-size: x-large">Welcome
+                    <asp:Label ID="LabelUNC" runat="server"></asp:Label>
                     ! Set a new appointment below.</span><br />
+                    <asp:Label ID="LabelUserID" runat="server" Text="Label" Visible="False"></asp:Label>
                     <br />
                     Please select your doctor.<br />
                     <br />
-                    <asp:DropDownList ID="DropDownListDoctors" runat="server">
+                    <asp:DropDownList ID="DropDownListDoctors" runat="server" OnSelectedIndexChanged="DropDownListDoctors_SelectedIndexChanged" Font-Names="Arial">
                         <asp:ListItem>Select Doctor</asp:ListItem>
                         <asp:ListItem>Dr. Smith</asp:ListItem>
                         <asp:ListItem>Dr. Johnson</asp:ListItem>
-                        <asp:ListItem>Dr. Brown</asp:ListItem>
-                        <asp:ListItem>Dr. Ng</asp:ListItem>
+                        <asp:ListItem>Dr. Nguyen</asp:ListItem>
                     </asp:DropDownList>
                     <br />
                     <br />
-                    <asp:Button ID="ButtonDoc" runat="server" OnClick="ButtonDoc_Click" Text="Submit" />
+                    <asp:Button ID="ButtonDoc" runat="server" OnClick="ButtonDoc_Click" Text="Submit" Font-Names="Arial" />
                 </asp:Panel>
                 <asp:Panel ID="View2" runat="server">
                     Please select a date.<br />
@@ -48,22 +37,10 @@
                         <TodayDayStyle BackColor="#CCCC99" />
                     </asp:Calendar>
                     <br />
-                    <asp:Button ID="ButtonDate" runat="server" Text="Submit" OnClick="ButtonDate_Click" />
+                    <asp:Button ID="ButtonDate" runat="server" Text="Submit" OnClick="ButtonDate_Click" Font-Names="Arial" />
                 </asp:Panel>
                 <asp:Panel ID="View3" runat="server">
                     Please select a time.<br />
-                    <br />
-                    <asp:DropDownList ID="DropDownListTime" runat="server">
-                        <asp:ListItem>Select a time</asp:ListItem>
-                        <asp:ListItem>9 AM</asp:ListItem>
-                        <asp:ListItem>10 AM</asp:ListItem>
-                        <asp:ListItem>11 AM</asp:ListItem>
-                        <asp:ListItem>12 AM</asp:ListItem>
-                        <asp:ListItem>2 PM</asp:ListItem>
-                        <asp:ListItem>3 PM</asp:ListItem>
-                        <asp:ListItem>4 PM</asp:ListItem>
-                        <asp:ListItem>5 PM</asp:ListItem>
-                    </asp:DropDownList>
                     <br />
                     <asp:RadioButton ID="RadioButton9" runat="server" Text="9:00 AM" CausesValidation="True" GroupName="radiobuttons" />
                     <br />
@@ -79,12 +56,13 @@
                     <br />
                     <asp:RadioButton ID="RadioButton4" runat="server" Text="4:00 PM" CausesValidation="True" GroupName="radiobuttons" ValidationGroup="radiobuttons" />
                     <br />
-                    <br />
                     <asp:Label ID="LabelRadio" runat="server" ForeColor="Red" Text="Please select a time" Visible="False"></asp:Label>
                     <br />
-                    <asp:Button ID="ButtonTime" runat="server" Text="Submit" OnClick="ButtonTime_Click" />
+                    <asp:Button ID="ButtonTime" runat="server" Text="Submit" OnClick="ButtonTime_Click" Font-Names="Arial" />
+                    <br />
                 </asp:Panel>
                 <asp:Panel ID="View4" runat="server">
+                    <br />
                     If this information is correct, confirm appointment below.<br />
                     <br />
                     Appointment with
@@ -95,15 +73,13 @@
                     <asp:Label ID="LabelTime" runat="server" Text="Label"></asp:Label>
                     .<br />
                     <br />
-                    <asp:Button ID="ButtonConfirm" runat="server" Text="Confirm" />
+                    <asp:Button ID="ButtonConfirm" runat="server" Text="Confirm" OnClick="ButtonConfirm_Click" Font-Names="Arial" />
                 </asp:Panel>
                 <asp:Panel ID="View5" runat="server">
                     Appointment successfully scheduled! You can view your scheduled appointments on your
-                    <asp:HyperLink ID="HyperLinkUserPage" runat="server">User Page</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkUserPage" runat="server" NavigateUrl="~/User.aspx">User Page</asp:HyperLink>
                     .<br />
                 </asp:Panel>
             <br />
             </div>
-    </form>
-</body>
-</html>
+</asp:Content>

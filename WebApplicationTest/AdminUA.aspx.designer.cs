@@ -11,7 +11,7 @@ namespace WebApplicationTest
 {
 
 
-    public partial class Admin
+    public partial class AdminUA
     {
 
         /// <summary>
@@ -31,6 +31,15 @@ namespace WebApplicationTest
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceRegistration;
+
+        /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
 
         /// <summary>
         /// GridView1 control.

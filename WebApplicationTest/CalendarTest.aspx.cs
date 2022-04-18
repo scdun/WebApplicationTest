@@ -9,26 +9,71 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationTest
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class CalendarTest : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Makes sure you're logged in to view the page
+
             if (Session["New"] != null)
             {
                 LabelUNC.Text = Session["New"].ToString();
+
+                //Establish connection to find userID
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
+                conn.Open();
+
+                string userIDQuery = "SELECT UserID FROM UserData WHERE Username='" + LabelUNC.Text + "'";
+
+                //New command to check this userID
+                SqlCommand passComm = new SqlCommand(userIDQuery, conn);
+
+                //stores userID in int 
+                int userID = Convert.ToInt32(passComm.ExecuteScalar().ToString());
+                LabelUserID.Text = userID.ToString();
+                conn.Close();
             }
             else
             {
                 Response.Redirect("Login.aspx");
             }
 
+            //Sets the default views for the page
             View1.Visible = true;
             View2.Visible = false;
             View3.Visible = false;
             View4.Visible = false;
             View5.Visible = false;
             LabelRadio.Visible = false;
+
+            if (IsPostBack)
+            {
+                //Resets views on postback
+                View1.Visible = true;
+                View2.Visible = false;
+                View3.Visible = false;
+                View4.Visible = false;
+                View5.Visible = false;
+                LabelRadio.Visible = false;
+
+                //Resets buttons on postback
+                RadioButton9.Enabled = true;
+                RadioButton10.Enabled = true;
+                RadioButton11.Enabled = true;
+                RadioButton12.Enabled = true;
+                RadioButton2.Enabled = true;
+                RadioButton3.Enabled = true;
+                RadioButton4.Enabled = true;
+            }
+        }
+        protected void DropDownListDoctors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //This honestly might not do anything? Have to double check
+            View1.Visible = true;
+            View2.Visible = false;
+            View3.Visible = false;
+            View4.Visible = false;
+            View5.Visible = false;
         }
 
         //sets doc label as selected doc
@@ -38,8 +83,6 @@ namespace WebApplicationTest
 
             View1.Visible = true;
             View2.Visible = true;
-
-
         }
 
         //fixes postback issue with form reset
@@ -49,83 +92,101 @@ namespace WebApplicationTest
             View2.Visible = true;
         }
 
-        //sets label as chosen date
+        //Might not do anything either, have to check
+        protected void Calendar1_Select(object sender, EventArgs e)
+        {
+            View1.Visible = true;
+            View2.Visible=true;
+        }
+
         protected void ButtonDate_Click(object sender, EventArgs e)
         {
+            //sets label as chosen date
             LabelDate.Text = Calendar1.SelectedDate.ToShortDateString();
 
             View1.Visible = true;
             View2.Visible = true;
             View3.Visible = true;
-        }
 
-
-        //picks which radiobutton was selected and loads it into labeltime
-        protected void ButtonTime_Click(object sender, EventArgs e)
-        {
-            //list
-
-            List<string> TimeList = new List<string>(); 
-            
-            string chosenDate = Calendar1.SelectedDate.ToShortDateString();
+            //ALL of the following checks the doc, date, and time against each other
+            //For the radio button selection in the next section
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
             conn.Open();
 
-            //
-            string checkTimeQuery = "SELECT Count(*) FROM [DocAppts] WHERE Date='" + chosenDate + "'";
+            //Checks if there are any appointments for the doctor and date selected
+            string timeQuery = "SELECT Count(*) FROM DocAppts WHERE Date='" + LabelDate.Text + "' AND Doctor='" + LabelDoctor.Text + "'";
+            SqlCommand timeComm = new SqlCommand(timeQuery, conn);
 
-            SqlCommand timeComm = new SqlCommand(checkTimeQuery, conn);
+            //Counts the number of rows from the previous query
+            int temp = Convert.ToInt32(timeComm.ExecuteScalar().ToString());
+            conn.Close();
 
-            SqlDataReader dataReader = timeComm.ExecuteReader();
-
-            while (dataReader.Read())
+            //If there are appointments for that date and doc, this runs
+            if (temp >= 1)
             {
-                if (dataReader.HasRows == true)
+                conn.Open();
+
+                //This checks what times are already taken for the selected doctor and date
+                string checkTimeQuery = "SELECT Time FROM DocAppts WHERE Date='" + LabelDate.Text + "' AND Doctor='" + LabelDoctor.Text + "'";
+                SqlCommand checkTimeComm = new SqlCommand(checkTimeQuery, conn);
+                
+                //Reads through entries for the query
+                SqlDataReader dr = checkTimeComm.ExecuteReader();
+
+                //List to store these entries
+                List<string> TimeList = new List<string>();
+
+                //Reads through data entries and adds them to list
+                while (dr.Read())
                 {
-                    TimeList.Add(dataReader.GetValue(0).ToString());
+                    TimeList.Add(dr["Time"].ToString());
+                }
+
+                //Checks if list contains values and disables radio buttons if it does
+                if (TimeList.Contains("9:00 AM"))
+                {
+                    RadioButton9.Enabled = false;
+                }
+                else if (TimeList.Contains("10:00 AM"))
+                {
+                    RadioButton10.Enabled = false;
+                }
+                else if (TimeList.Contains("11:00 AM"))
+                {
+                    RadioButton11.Enabled = false;
+                }
+                else if (TimeList.Contains("12:00 AM"))
+                {
+                    RadioButton12.Enabled = false;
+                }
+                else if (TimeList.Contains("2:00 PM"))
+                {
+                    RadioButton2.Enabled = false;
+                }
+                else if (TimeList.Contains("3:00 PM"))
+                {
+                    RadioButton3.Enabled = false;
+                }
+                else if (TimeList.Contains("4:00 PM"))
+                {
+                    RadioButton4.Enabled = false;
                 }
                 else
                 {
-                    conn.Close();
+                    LabelRadio.Visible = false;
                 }
-            }
-
-            //if loop for determining button visibility
-            if (TimeList.Contains(RadioButton9.Text))
-            {
-                RadioButton9.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton10.Text))
-            {
-                RadioButton10.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton11.Text))
-            {
-                RadioButton11.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton12.Text))
-            {
-                RadioButton12.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton2.Text))
-            {
-                RadioButton2.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton3.Text))
-            {
-                RadioButton3.Enabled = false;
-            }
-            else if (TimeList.Contains(RadioButton4.Text))
-            {
-                RadioButton4.Enabled = false;
             }
             else
             {
-                LabelRadio.Visible = false;
+                conn.Close();
             }
+        }
 
-            //if loop for selecting the time
+        //picks which radiobutton was selected and loads it into labeltime
+        protected void ButtonTime_Click(object sender, EventArgs e)
+        {
+            //if loop for selecting the time and ensuring views aren't reset upon clicking
             if (RadioButton9.Checked == true)
             {
                 LabelRadio.Visible = false;
@@ -198,33 +259,47 @@ namespace WebApplicationTest
             }
         }
 
-        /*SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
-conn.Open();
+        //Confirm button! Loads the info into the database
+        protected void ButtonConfirm_Click(object sender, EventArgs e)
+        {
+            //Open connection
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
+            conn.Open();
 
-string checktime = "SELECT Count(*) FROM [ApptTest] WHERE Time='" + DropDownListTime.SelectedItem.ToString() + "'";
+            //Insertion query
+            string insertQuery = "INSERT INTO DocAppts (Doctor, Time, IsBooked, UserID, Date) values (@doctor, @time, @isbooked, @userid, @date)";
+            SqlCommand insertCom = new SqlCommand(insertQuery, conn);
 
-//Command, uses the checktime string and connection established above
-SqlCommand checktimecom = new SqlCommand(checktime, conn);
+            insertCom.Parameters.AddWithValue("@doctor", LabelDoctor.Text);
+            insertCom.Parameters.AddWithValue("@time", LabelTime.Text);
+            insertCom.Parameters.AddWithValue("@isbooked", "True");
+            insertCom.Parameters.AddWithValue("@userid", LabelUserID.Text);
+            insertCom.Parameters.AddWithValue("@date", LabelDate.Text);
 
-int temp = Convert.ToInt32(checktimecom.ExecuteScalar().ToString());
+            insertCom.ExecuteNonQuery();
 
-if (temp == 0)
-{
-    DropDownListTime.SelectedItem.Value = Visible;
-}
+            //hides all other views except success view
+            View1.Visible = false;
+            View2.Visible = false;
+            View3.Visible = false;
+            View4.Visible = false;
+            View5.Visible = true;
 
-    LabelTime.Text = DropDownListTime.SelectedItem.ToString();*/
+            conn.Close();
+
+        }
     }
 }
 
-/* SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegistrationConnectionString"].ConnectionString);
-conn.Open();
+/*
+//THIS WORKED, WE'LL BE FINE IF ITS JUST THIS, it's backup code
+string timecheck = checkTimeComm.ExecuteScalar().ToString();
 
-//Insert selected doctor query
-string insertDocQuery = "INSERT INTO ApptTest (Doctor) values (@doctor)";
-
-//Insert selected doc command (under the connection above)
-SqlCommand insertDocCom = new SqlCommand(insertDocQuery, conn);
-
-//Inserts selected doctor into database
-insertDocCom.Parameters.AddWithValue("@doctor", DropDownListDoctors.SelectedItem.ToString());*/
+if (timecheck == "10:00 AM")
+{
+RadioButton10.Enabled = false;
+}
+else
+{
+RadioButton10.Enabled = true;
+}*/

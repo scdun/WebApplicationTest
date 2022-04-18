@@ -19,6 +19,18 @@ namespace WebApplicationTest
             {
                 Response.Redirect("Login.aspx");
             }
+
+            //Shows or hides Admin hyperlink depending on user
+            if (LabelUser.Text == "Admin")
+            {
+                HyperLinkAdmin.Visible = true;
+                HyperLinkApptData.Visible = true;
+            }
+            else
+            {
+                HyperLinkAdmin.Visible = false;
+                HyperLinkApptData.Visible = false;
+            }
         }
 
         protected void ButtonLogout_Click(object sender, EventArgs e)

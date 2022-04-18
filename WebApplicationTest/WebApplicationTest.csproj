@@ -107,7 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Admin.aspx" />
+    <Content Include="AdminUA.aspx" />
     <Content Include="App_Data\Registration.mdf" />
     <Content Include="App_Data\Registration_log.ldf">
       <DependentUpon>Registration.mdf</DependentUpon>
@@ -132,6 +132,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Login.aspx" />
     <Content Include="CalendarTest.aspx" />
+    <Content Include="AdminAppts.aspx" />
+    <None Include="Properties\PublishProfiles\PPA488 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PPA488 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -169,12 +172,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
+    <Compile Include="AdminUA.aspx.cs">
+      <DependentUpon>AdminUA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin.aspx.designer.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
+    <Compile Include="AdminUA.aspx.designer.cs">
+      <DependentUpon>AdminUA.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -244,6 +247,13 @@
     </Compile>
     <Compile Include="CalendarTest.aspx.designer.cs">
       <DependentUpon>CalendarTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAppts.aspx.cs">
+      <DependentUpon>AdminAppts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAppts.aspx.designer.cs">
+      <DependentUpon>AdminAppts.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
