@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplicationTest.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="WebApplicationTest.Login" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Patient Portal</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -46,25 +46,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/User">Patient Portal</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/User">User</a></li>
-                        <li><a runat="server" href="~/CalendarTest">New Appointment</a></li>
-                    </ul>
+                    <a class="navbar-brand" runat="server" href="~/Login">Patient Portal</a>
                 </div>
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            <asp:ContentPlaceHolder ID="LoginContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Patient Portal version 1</p>
-            </footer>
         </div>
 
     </form>
 </body>
 </html>
+

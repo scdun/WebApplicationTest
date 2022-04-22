@@ -74,7 +74,6 @@ namespace WebApplicationTest
                     Response.Write("Error: " + ex.Message);
                 }
             }
-            //MIGHT WANT TO TRY TO CODE THIS SO IT SHOWS UP SOMEWHERE BELOW THE SUBMIT BUTTON
             else
             {
                 LabelFail.Visible = true;
