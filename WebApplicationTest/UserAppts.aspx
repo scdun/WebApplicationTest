@@ -91,7 +91,7 @@ WHERE ([UserName] = @UserName)" DeleteCommand="DELETE FROM [UserData] WHERE [Use
             </asp:SqlDataSource>
             <br />
             <span class="grid">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="5" DataKeyNames="UserID" DataSourceID="SqlDataSource1" BackColor="#9CA8B6" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" Text-Align="Center" HorizontalAlign="Center" Margin-Left="10%" Margin-Right="10%" Justify-Content="Center" CssClass="Grid1" CellSpacing="3">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="5" DataKeyNames="UserID" DataSourceID="SqlDataSource1" BackColor="#9CA8B6" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" Text-Align="Center" HorizontalAlign="Center" Margin-Left="10%" Margin-Right="10%" Justify-Content="Center" CssClass="Grid1" CellSpacing="3" AllowSorting="True">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" />

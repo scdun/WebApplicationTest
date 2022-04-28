@@ -50,7 +50,7 @@ namespace WebApplicationTest
             {
                 //Resets views on postback
                 View1.Visible = true;
-                View2.Visible = false;
+                View2.Visible = true;
                 View3.Visible = false;
                 View4.Visible = false;
                 View5.Visible = false;
@@ -87,6 +87,12 @@ namespace WebApplicationTest
 
         //fixes postback issue with form reset
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            View1.Visible = true;
+            View2.Visible = true;
+        }
+
+        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
         {
             View1.Visible = true;
             View2.Visible = true;

@@ -81,7 +81,7 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" ReadOnly="True" />
                 <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxFN" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxFN" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px" Text='<%# Bind("FirstName", "{0}") %>'></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBoxFN" ErrorMessage="First name is required" Font-Names="Montserrat" ForeColor="Red"></asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
@@ -90,7 +90,7 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Last Name" SortExpression="LastName">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxLN" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxLN" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px" Text='<%# Bind("LastName", "{0}") %>'></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TextBoxLN" ErrorMessage="Last name is required" Font-Names="Montserrat" ForeColor="Red"></asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
@@ -99,7 +99,7 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Username" SortExpression="Username">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxUN" runat="server" Height="30px" Width="180px"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUN" runat="server" Height="30px" Width="180px" Font-Names="Montserrat" Text='<%# Bind("Username", "{0}") %>'></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBoxUN" ErrorMessage="Username is required" ForeColor="Red"></asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
@@ -108,7 +108,7 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Doctor" SortExpression="Doctor">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListDoctors" runat="server" Font-Names="Montserrat" Height="30px" Width="187px">
+                        <asp:DropDownList ID="DropDownListDoctors" runat="server" Font-Names="Montserrat" Height="30px" Width="187px" SelectedValue='<%# Bind("Doctor", "{0}") %>'>
                             <asp:ListItem>Select Doctor</asp:ListItem>
                             <asp:ListItem>Dr. Smith</asp:ListItem>
                             <asp:ListItem>Dr. Johnson</asp:ListItem>
@@ -122,17 +122,17 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Time" SortExpression="Time">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListTime" runat="server" Font-Names="Montserrat" Height="30px" Width="187px">
+                        <asp:DropDownList ID="DropDownListTime" runat="server" Font-Names="Montserrat" Height="30px" Width="187px" SelectedValue='<%# Bind("Time", "{0}") %>'>
                             <asp:ListItem>Select Time</asp:ListItem>
-                            <asp:ListItem>9:00AM</asp:ListItem>
-                            <asp:ListItem>10:00AM</asp:ListItem>
-                            <asp:ListItem>11:00AM</asp:ListItem>
-                            <asp:ListItem>12:00PM</asp:ListItem>
-                            <asp:ListItem>2:00PM</asp:ListItem>
-                            <asp:ListItem>3:00PM</asp:ListItem>
-                            <asp:ListItem>4:00PM</asp:ListItem>
+                            <asp:ListItem>9:00 AM</asp:ListItem>
+                            <asp:ListItem>10:00 AM</asp:ListItem>
+                            <asp:ListItem>11:00 AM</asp:ListItem>
+                            <asp:ListItem>12:00 PM</asp:ListItem>
+                            <asp:ListItem>2:00 PM</asp:ListItem>
+                            <asp:ListItem>3:00 PM</asp:ListItem>
+                            <asp:ListItem>4:00 PM</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Please select a time" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Please select a time" ForeColor="Red" ControlToValidate="DropDownListTime"></asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("Time") %>'></asp:Label>
@@ -140,8 +140,8 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Date" SortExpression="Date">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox6" runat="server" Height="30px" Text='<%# Bind("Date") %>' Width="180px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="Date required" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="TextBox6" runat="server" Height="30px" Text='<%# Bind("Date", "{0}") %>' Width="180px" Font-Names="Montserrat"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="Date required" ForeColor="Red" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("Date") %>'></asp:Label>

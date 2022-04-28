@@ -12,10 +12,9 @@
             background-size: cover;
             background-position: center center;
         }
-
         .bg-container {
             background-color: aliceblue;
-            opacity: .9;
+            background-color: rgba(240, 248, 255, .6);
             margin-left: 5px;
             width: 68%;
         }
@@ -24,6 +23,12 @@
             text-align: left;
             font-family: Montserrat SemiBold;
             width: 87%;
+        }
+        .centertrue {
+            margin: auto;
+            text-align: center;
+            font-family: Montserrat SemiBold;
+            width: 60%;        
         }
         .lead, .header {
             text-align: left;
@@ -91,7 +96,7 @@
                                 Username:<br /> <br /> </td>
                             <td>
                                 <br />
-                                <asp:TextBox ID="TextBoxUN" runat="server" Height="30px" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxUN" runat="server" Height="30px" style="text-align: left;" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBoxUN" ErrorMessage="Username is required" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
@@ -103,7 +108,7 @@
                                 <br />
                                 First Name:<br /> <br /> </td>
                             <td class="auto-style7">
-                                <asp:TextBox ID="TextBoxFN" runat="server" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxFN" runat="server" Height="30px" style="text-align: left;" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBoxFN" ErrorMessage="First name is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style7"></td>
@@ -113,7 +118,7 @@
                                 <br />
                                 Last Name:<br /> <br /> </td>
                             <td class="auto-style7">
-                                <asp:TextBox ID="TextBoxLN" runat="server" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxLN" runat="server" Height="30px" style="text-align: left;" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TextBoxLN" ErrorMessage="Last name is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style5"></td>
@@ -124,7 +129,7 @@
                                 Email:<br /> <br /> </td>
                             <td class="auto-style7">
                                 <br />
-                                <asp:TextBox ID="TextBoxEmail" runat="server" Height="30px" style="text-align: left;" TextMode="Email" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxEmail" runat="server" Height="30px" style="text-align: left;" TextMode="Email" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBoxEmail" ErrorMessage="Email is required" ForeColor="Red" style="text-align: left;"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBoxEmail" ErrorMessage="Please enter valid Email" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
@@ -137,7 +142,7 @@
                                 <br />
                                 Sex:<br /> <br /> </td>
                             <td>
-                                <asp:DropDownList ID="DropDownListSex" runat="server" Font-Names="montserrat semibold" Height="30px" style="text-align: left;" Width="187px">
+                                <asp:DropDownList ID="DropDownListSex" runat="server" Font-Names="montserrat" Height="30px" style="text-align: left;" Width="187px">
                                     <asp:ListItem>Select</asp:ListItem>
                                     <asp:ListItem>M</asp:ListItem>
                                     <asp:ListItem>F</asp:ListItem>
@@ -153,7 +158,7 @@
                                 <br />
                                 Address:<br /> <br /> </td>
                             <td>
-                                <asp:TextBox ID="TextBoxAddress" runat="server" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxAddress" runat="server" Height="30px" style="text-align: left;" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBoxAddress" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Required</asp:RequiredFieldValidator>
                             </td>
                             <td>&nbsp;</td>
@@ -164,7 +169,7 @@
                                 <br />
                                 State:<br /> <br /> </td>
                             <td>
-                                <asp:DropDownList ID="DropDownListState" runat="server" Font-Names="montserrat semibold" Height="30px" style="text-align: left;" Width="187px">
+                                <asp:DropDownList ID="DropDownListState" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="187px">
                                     <asp:ListItem>Select State</asp:ListItem>
                                     <asp:ListItem>AL</asp:ListItem>
                                     <asp:ListItem>AK</asp:ListItem>
@@ -227,7 +232,7 @@
                                 <br />
                                 Phone Number:<br /> <br /> </td>
                             <td>
-                                <asp:TextBox ID="TextBoxPhone" runat="server" Height="30px" style="text-align: left;" TextMode="Phone" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxPhone" runat="server" Height="30px" style="text-align: left;" TextMode="Phone" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBoxPhone" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Required</asp:RequiredFieldValidator>
                             </td>
                             <td>&nbsp;</td>
@@ -238,7 +243,7 @@
                                 <br />
                                 Date of Birth:<br /> <br /> </td>
                             <td>
-                                <asp:TextBox ID="TextBoxDOB" runat="server" Font-Names="montserrat semibold" Height="30px" style="text-align: left;" TextMode="Date" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxDOB" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" TextMode="Date" Width="180px"></asp:TextBox>
                                 <span>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBoxDOB" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                 </span>
@@ -253,7 +258,7 @@
                                 <br />
                                                     </td>
                             <td class="auto-style13">
-                                <asp:TextBox ID="TextBoxPass" runat="server" class="textbox" Height="30px" style="text-align: left;" TextMode="Password" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxPass" runat="server" class="textbox" Height="30px" style="text-align: left;" TextMode="Password" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBoxPass" ErrorMessage="Password is required" ForeColor="Red" style="text-align: left;"></asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style13">&nbsp;</td>
@@ -265,7 +270,7 @@
                                 Confirm Password:<br /> <br /> </td>
                             <td>
                                 <br />
-                                <asp:TextBox ID="TextBoxRPass" runat="server" class="textbox" Height="30px" style="text-align: left;" TextMode="Password" Width="180px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxRPass" runat="server" class="textbox" Height="30px" style="text-align: left;" TextMode="Password" Width="180px" Font-Names="Montserrat"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBoxRPass" ErrorMessage="Confirm password is required" ForeColor="Red" style="text-align: left;"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBoxPass" ControlToValidate="TextBoxRPass" ErrorMessage="Passwords must match" ForeColor="Red" style="text-align: left;"></asp:CompareValidator>
@@ -290,12 +295,17 @@
                 </div>
             </asp:View>
             <asp:View ID="View2" runat="server">
+                <div class="centertrue">
+                <br />
+                <br />
                 <h3 style="text-align: center;" class="auto-style14">Registration Successful!</h3>
                 <p style="text-align: center;">
                     &nbsp;</p>
                 <p style="text-align: center">
-                    <asp:Button ID="ButtonSuccess" runat="server" OnClick="ButtonSuccess_Click" Text="Login" Font-Names="montserrat semibold" />
+                    <asp:Button ID="ButtonSuccess" runat="server" OnClick="ButtonSuccess_Click" Text="Login" Font-Names="montserrat semibold" Font-Size="Large" Height="50px" Width="122px" />
                 </p>
+                <br />
+                </div>
             </asp:View>
         </asp:MultiView>
         </div>

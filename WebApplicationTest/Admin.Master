@@ -159,7 +159,7 @@ function updatemenu() {
 			<input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
 			<ul>
 				<li class="left"><a href="Admin.aspx">Home</a></li>
-				<li class="left"><a class='dropdown-arrow' href="~/Admin">Admin</a>
+				<li class="left"><a class='dropdown-arrow' href="Admin.aspx">Admin</a>
 				<ul class='sub-menus'>
 					<li><a href="AdminAppts.aspx">User Appointments</a></li>
 					<li><a href="AdminUA.aspx">User Information</a></li>

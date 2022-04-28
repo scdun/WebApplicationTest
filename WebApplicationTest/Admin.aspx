@@ -14,8 +14,7 @@
             background-position: center center;
     }
     .bg-container {
-            background-color: aliceblue;
-            opacity: .9;
+            background-color: rgba(240, 248, 255, .6);
             margin: auto;
             width: 60%;
             padding-bottom:20px;
@@ -48,15 +47,38 @@
         color:gray;
         cursor:pointer;
     }
+.myButton {
+	background-color:#7999d1;
+	border-radius:15px;
+	border:2px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#030003;
+	font-family:Montserrat SemiBold;
+	font-size:19px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #000000;
+}
+.myButton:hover {
+	background-color:#2f3c63;
+    color:black;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 </style>
     <div class="bg-container">
+        <br />
+        <br />
             <h1>Welcome Admin!</h1>
         <div class="flex-container">
             <div class="left">
-                <asp:HyperLink class="hyperlink" ID="HyperLink2" runat="server" NavigateUrl="~/AdminUA.aspx">User Information</asp:HyperLink>
+                <a href="AdminUA.aspx" class="myButton">User Information</a>
             </div>
             <div class="right">
-                <asp:HyperLink class="hyperlink" ID="HyperLink1" runat="server" NavigateUrl="~/AdminAppts.aspx">User Appointments</asp:HyperLink>
+                <a href="AdminAppts.aspx" class="myButton">User Appointments</a>
             </div>
         </div>
     </div>

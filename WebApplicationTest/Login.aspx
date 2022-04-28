@@ -14,7 +14,7 @@
         }
         .bg-container {
             background-color: aliceblue;
-            opacity: .9;
+            background-color: rgba(240, 248, 255, .6);
             margin: auto;
             width: 50%;
         }
