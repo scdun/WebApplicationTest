@@ -11,7 +11,7 @@ namespace WebApplicationTest
 {
 
 
-    public partial class User
+    public partial class UserAppts
     {
 
         /// <summary>
@@ -24,6 +24,15 @@ namespace WebApplicationTest
         protected global::System.Web.UI.WebControls.Label LabelUser;
 
         /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+
+        /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
@@ -33,12 +42,12 @@ namespace WebApplicationTest
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-        /// DetailsView1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

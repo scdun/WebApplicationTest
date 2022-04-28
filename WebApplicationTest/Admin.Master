@@ -1,15 +1,15 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="WebApplicationTest.Login" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="WebApplicationTest.Site1" %>
 
 <!DOCTYPE html>
 
 <html lang="en">
 <head runat="server">
-	<style>
-.footer {
-	height:20px;
-	position:absolute;
-	bottom:0;
-}
+    <style>
+		.footer {
+			height:20px;
+			position:absolute;
+			bottom:0;
+		}
 #menu {
 	background: none;
 	color: #FFF;
@@ -120,7 +120,7 @@ function updatemenu() {
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Patient Portal</title>
+    <title><%: Page.Title %> - My ASP.NET Application</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -128,6 +128,7 @@ function updatemenu() {
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
 </head>
 <body>
     <form runat="server">
@@ -151,41 +152,34 @@ function updatemenu() {
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <!--navbar-->
-                    <nav id='menu'>
-			        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
-			            <ul>
-				            <li class="left"><a href="Login.aspx">Home</a></li>
-				            <li class="left"><a href="Register.aspx">New User</a></li>
-			            </ul>
-		            </nav>
-                    <!--navbar-->
+		<div class="navbar navbar-inverse navbar-fixed-top" width="100%">
+            <div class="container" width="100%">
+                <div class="navbar-header" width="100%">
+		<nav id='menu'>
+			<input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+			<ul>
+				<li class="left"><a href="Admin.aspx">Home</a></li>
+				<li class="left"><a class='dropdown-arrow' href="~/Admin">Admin</a>
+				<ul class='sub-menus'>
+					<li><a href="AdminAppts.aspx">User Appointments</a></li>
+					<li><a href="AdminUA.aspx">User Information</a></li>
+				</ul>
+				</li>
+				<li class="right"><a style="float:right;" href="Logout.aspx">Logout</a></li>
+			</ul>
+		</nav>
+
                 </div>
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="LoginContent" runat="server">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-			<footer class="footer">
+            <footer class="footer">
                 <p>&copy; <%: DateTime.Now.Year %> - Patient Portal version 3</p>
             </footer>
-
         </div>
-
     </form>
 </body>
 </html>
-
-<!--If the new menu breaks everything, delete all of it and put this code under div class="navbar-header"
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" style="margin:auto; justify-content:left;" runat="server" href="~/Login">Patient Portal</a>
-\\                  <a class="navbar-brand" style="margin:auto; justify-content:right;" runat="server" href="~/Login">Login</a>
--->
 

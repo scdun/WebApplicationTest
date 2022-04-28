@@ -18,6 +18,8 @@ namespace WebApplicationTest
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
+            LabelPassFail0.Visible = false;
+            LabelUserFail.Visible = false;
             //Connection is the same as the one on Default. Connects to the same database
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
             conn.Open();
@@ -41,6 +43,11 @@ namespace WebApplicationTest
 
                 if (password == TextBoxLoginPass.Text)
                 {
+                    if (TextBoxLoginUN.Text == "Admin")
+                    {
+                        Session["New"] = TextBoxLoginUN.Text;
+                        Response.Redirect("Admin.aspx");
+                    }
                     //Start new session
                     Session["New"] = TextBoxLoginUN.Text;
                     //Will redirect to user page
@@ -49,12 +56,12 @@ namespace WebApplicationTest
                 }
                 else
                 {
-                    Response.Write("Password is incorrect.");
+                    LabelPassFail0.Visible = true;
                 }
             }
             else
             {
-                Response.Write("Username does not exist");
+                LabelUserFail.Visible = true;
             }
         }
     }

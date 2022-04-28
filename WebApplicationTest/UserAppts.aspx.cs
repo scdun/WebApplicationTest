@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationTest
 {
-    public partial class User : System.Web.UI.Page
+    public partial class UserAppts : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["New"] != null)
+            if (Session["New"] != null)
             {
                 LabelUser.Text = Session["New"].ToString();
             }
@@ -20,11 +20,7 @@ namespace WebApplicationTest
                 Response.Redirect("Login.aspx");
             }
         }
-
-        protected void ButtonLogout_Click(object sender, EventArgs e)
-        {
-            Session["New"] = null;
-            Response.Redirect("Login.aspx");
-        }
     }
 }
+//I can't comment this in the aspx page, so here
+//Adding a height value to the rowstyle spaced the cells apart

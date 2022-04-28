@@ -60,6 +60,24 @@ namespace WebApplicationTest
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPW;
 
         /// <summary>
+        /// LabelPassFail0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPassFail0;
+
+        /// <summary>
+        /// LabelUserFail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUserFail;
+
+        /// <summary>
         /// ButtonLogin control.
         /// </summary>
         /// <remarks>

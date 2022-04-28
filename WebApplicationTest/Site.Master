@@ -4,6 +4,120 @@
 
 <html lang="en">
 <head runat="server">
+    <style>
+.footer {
+	height:20px;
+	position:absolute;
+	bottom:0;
+}
+#menu {
+	background: none;
+	color: #FFF;
+	height: 45px;
+	padding-left: 18px;
+	border-radius: 6px;
+	width:100%;
+}
+#menu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none
+}
+#menu ul {
+	width: 100%;
+}
+.left {
+	float:left;
+	display: inline;
+	position: relative;
+}
+.right {
+	display: inline;
+	position: relative;
+	float:right;
+}
+#menu a {
+	display: block;
+	line-height: 45px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+#menu a.dropdown-arrow:after {
+	content: "\25BE";
+	margin-left: 5px;
+}
+#menu li a:hover {
+	color: #0099CC;
+	background: #F2F2F2;
+}
+#menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 45px;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer
+}
+#menu label {
+	display: none;
+	line-height: 45px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+#menu label:before {
+	font-size: 1.6em;
+	content: "\2261"; 
+	margin-left: 20px;
+}
+#menu ul.sub-menus{
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #444444;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+#menu ul.sub-menus li {
+	display: block;
+	width: 100%;
+}
+#menu ul.sub-menus a {
+	color: #FFFFFF;
+	font-size: 16px;
+}
+#menu li:hover ul.sub-menus {
+	display: block
+}
+#menu ul.sub-menus a:hover{
+	background: #F2F2F2;
+	color: #444444;
+}
+@media screen and (max-width: 100%){
+	#menu {position:relative}
+	#menu ul {background:#111;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
+	#menu ul.sub-menus {width:100%;position:static;}
+	#menu ul.sub-menus a {padding-left:30px;}
+	#menu li {display:block;float:none;width:auto;}
+	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
+	#menu input {z-index:4}
+	#menu input:checked + label {color:white}
+	#menu input:checked + label:before {content:"\00d7"}
+	#menu input:checked ~ ul {display:block}
+}
+function updatemenu() {
+  if (document.getElementById('responsive-menu').checked == true) {
+    document.getElementById('menu').style.borderBottomRightRadius = '0';
+    document.getElementById('menu').style.borderBottomLeftRadius = '0';
+  }else{
+    document.getElementById('menu').style.borderRadius = '6px';
+  }
+}
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
@@ -41,27 +155,28 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/User">Patient Portal</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/User">User</a></li>
-                        <li><a runat="server" href="~/CalendarTest">New Appointment</a></li>
-                    </ul>
+					<nav id='menu'>
+			        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+			            <ul>
+							<li class="left"><a href="User.aspx">Home</a></li>
+							<li class="left"><a href="User.aspx">Account</a></li>
+							<li class="left"><a class='dropdown-arrow'>Appointments</a>
+								<ul class='sub-menus'>
+									<li class="submenu"><a href="UserAppts.aspx">Manage Appts</a></li>
+									<li class="submenu"><a href="CalendarTest.aspx">Set New Appt</a></li>
+								</ul>
+							</li>
+						<li class="right"><a style="float:right;" href="Logout.aspx">Logout</a></li>
+			            </ul>
+		            </nav>
                 </div>
             </div>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Patient Portal version 1</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Patient Portal version 3</p>
             </footer>
         </div>
 

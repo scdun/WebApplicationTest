@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationTest
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Admin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Session["New"] = null;
         }
     }
 }
