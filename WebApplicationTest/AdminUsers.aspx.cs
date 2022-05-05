@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationTest
 {
-    public partial class Admin : System.Web.UI.Page
+    public partial class AdminUsers : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -15,7 +15,7 @@ namespace WebApplicationTest
             {
                 if (Session["New"].ToString() == "Admin")
                 {
-                    Label1.Text = Session["New"].ToString();
+                    Label13.Text = Session["New"].ToString();
                 }
                 else
                 {
@@ -26,6 +26,7 @@ namespace WebApplicationTest
             {
                 Response.Redirect("Login.aspx");
             }
+
         }
     }
 }

@@ -72,7 +72,8 @@
     <div class="bg-container">
         <br />
         <br />
-            <h1>Welcome Admin!</h1>
+            <h1>Welcome Admin!<asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
+        </h1>
         <div class="flex-container">
             <div class="left">
                 <a href="AdminUA.aspx" class="myButton">User Information</a>

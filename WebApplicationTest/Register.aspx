@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="LoginContent" runat="server">
         <style>
-        html, body {
+            html, body {
             margin: 0;
             min-height: 100%;
             min-width: 100%;
@@ -165,6 +165,17 @@
                         </tr>
 
                                                 <tr>
+                                                    <td class="auto-style10">
+                                                        <br />
+                                                        City:<br /> <br /> </td>
+                                                    <td>
+                                                        <asp:TextBox ID="TextBoxCity" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="TextBoxCity" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                    </td>
+                                                    <td>&nbsp;</td>
+                        </tr>
+
+                                                <tr>
                             <td class="auto-style10">
                                 <br />
                                 State:<br /> <br /> </td>
@@ -216,7 +227,7 @@
                                     <asp:ListItem>TX</asp:ListItem>
                                     <asp:ListItem>UT</asp:ListItem>
                                     <asp:ListItem>VT</asp:ListItem>
-                                    <asp:ListItem>VI</asp:ListItem>
+                                    <asp:ListItem>VA</asp:ListItem>
                                     <asp:ListItem>WA</asp:ListItem>
                                     <asp:ListItem>WV</asp:ListItem>
                                     <asp:ListItem>WI</asp:ListItem>

@@ -44,7 +44,7 @@ namespace WebApplicationTest
                 {
 
                     //inserts info to database
-                    string insertQuery = "INSERT INTO UserData (Username, Password, FirstName, LastName, DOB, Sex, PhoneNum, StreetAdd, StateAdd, Email, Role) values (@username, @password, @firstname, @lastname, @dob, @sex, @phonenum, @streetadd, @stateadd, @email, @role)";
+                    string insertQuery = "INSERT INTO UserData (Username, Password, FirstName, LastName, DOB, Sex, PhoneNum, StreetAdd, StateAdd, Email, Role, City) values (@username, @password, @firstname, @lastname, @dob, @sex, @phonenum, @streetadd, @stateadd, @email, @role, @city)";
                     SqlCommand insertCom = new SqlCommand(insertQuery, conn);
 
                     //replaces the @values with inputted info from the form
@@ -59,6 +59,7 @@ namespace WebApplicationTest
                     insertCom.Parameters.AddWithValue("@stateadd", DropDownListState.SelectedItem.ToString());
                     insertCom.Parameters.AddWithValue("@email", TextBoxEmail.Text);
                     insertCom.Parameters.AddWithValue("@role", "User");
+                    insertCom.Parameters.AddWithValue("@city", TextBoxCity.Text);
 
                     //executes query
                     insertCom.ExecuteNonQuery();

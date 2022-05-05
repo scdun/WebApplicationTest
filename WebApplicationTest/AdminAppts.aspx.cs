@@ -11,13 +11,20 @@ namespace WebApplicationTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["New"].ToString() == "Admin")
+            if (Session["New"] != null)
             {
-                LabelAdmin1.Text = Session["New"].ToString();
+                if (Session["New"].ToString() == "Admin")
+                {
+                    LabelAdmin1.Text = Session["New"].ToString();
+                }
+                else
+                {
+                    Response.Redirect("User.aspx");
+                }
             }
             else
             {
-                Response.Redirect("User.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
     }

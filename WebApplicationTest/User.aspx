@@ -43,7 +43,7 @@
             <h2>Your Account Information</h2>
         </div>
         <div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PPAdbConnectionString %>" SelectCommand="SELECT [UserID], [Username], [FirstName], [LastName], [DOB], [Sex], [PhoneNum], [StreetAdd], [StateAdd], [Email] FROM [UserData] WHERE ([Username] = @Username)" DeleteCommand="DELETE FROM [UserData] WHERE [UserID] = @UserID" InsertCommand="INSERT INTO [UserData] ([Username], [FirstName], [LastName], [DOB], [Sex], [PhoneNum], [StreetAdd], [StateAdd], [Email]) VALUES (@Username, @FirstName, @LastName, @DOB, @Sex, @PhoneNum, @StreetAdd, @StateAdd, @Email)" UpdateCommand="UPDATE [UserData] SET [Username] = @Username, [FirstName] = @FirstName, [LastName] = @LastName, [DOB] = @DOB, [Sex] = @Sex, [PhoneNum] = @PhoneNum, [StreetAdd] = @StreetAdd, [StateAdd] = @StateAdd, [Email] = @Email WHERE [UserID] = @UserID">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PPAdbConnectionString %>" SelectCommand="SELECT [UserID], [Username], [FirstName], [LastName], [DOB], [Sex], [PhoneNum], [StreetAdd], [StateAdd], [Email], [City] FROM [UserData] WHERE ([Username] = @Username)" DeleteCommand="DELETE FROM [UserData] WHERE [UserID] = @UserID" InsertCommand="INSERT INTO [UserData] ([Username], [FirstName], [LastName], [DOB], [Sex], [PhoneNum], [StreetAdd], [StateAdd], [Email], [City]) VALUES (@Username, @FirstName, @LastName, @DOB, @Sex, @PhoneNum, @StreetAdd, @StateAdd, @Email, @City)" UpdateCommand="UPDATE [UserData] SET [Username] = @Username, [FirstName] = @FirstName, [LastName] = @LastName, [DOB] = @DOB, [Sex] = @Sex, [PhoneNum] = @PhoneNum, [StreetAdd] = @StreetAdd, [StateAdd] = @StateAdd, [Email] = @Email, [City] = @City WHERE [UserID] = @UserID">
                 <DeleteParameters>
                     <asp:Parameter Name="UserID" Type="Int32" />
                 </DeleteParameters>
@@ -57,6 +57,7 @@
                     <asp:Parameter Name="StreetAdd" Type="String" />
                     <asp:Parameter Name="StateAdd" Type="String" />
                     <asp:Parameter Name="Email" Type="String" />
+                    <asp:Parameter Name="City" />
                 </InsertParameters>
                 <SelectParameters>
                     <asp:ControlParameter ControlID="LabelUser" Name="Username" PropertyName="Text" Type="String" />
@@ -71,6 +72,7 @@
                     <asp:Parameter Name="StreetAdd" Type="String" />
                     <asp:Parameter Name="StateAdd" Type="String" />
                     <asp:Parameter Name="Email" Type="String" />
+                    <asp:Parameter Name="City" />
                     <asp:Parameter Name="UserID" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
@@ -83,98 +85,117 @@
                 <EmptyDataRowStyle Font-Names="Montserrat" Font-Size="18px" />
                 <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
                 <Fields>
-                    <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" ReadOnly="True" SortExpression="UserID" />
+                    <asp:TemplateField HeaderText="UserID" InsertVisible="False" SortExpression="UserID">
+                        <EditItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("UserID") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("UserID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Username" SortExpression="Username">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Font-Names="Montserrat" ReadOnly="True" Text='<%# Bind("Username") %>' Width="250px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox11" runat="server" Font-Names="Montserrat" Height="30px" ReadOnly="True" Text='<%# Bind("Username") %>' Width="250px"></asp:TextBox>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Username") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Username") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
+                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server" Font-Names="Montserrat" Text='<%# Bind("FirstName") %>' Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox2" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox1" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("FirstName") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Last Name" SortExpression="LastName">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox3" runat="server" Font-Names="Montserrat" Text='<%# Bind("LastName") %>' Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox2" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("LastName") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="DOB" SortExpression="DOB">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxDOB" runat="server" Font-Names="montserrat" Height="30px" style="text-align: left;" TextMode="Date" Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBoxDOB" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox3" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("DOB", "{0:d}") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("DOB") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("DOB") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("DOB") %>'></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("DOB", "{0:d}") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Sex" SortExpression="Sex">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownListSex" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="250px">
+                            <asp:DropDownList ID="DropDownListSex" runat="server" Font-Names="montserrat" Height="30px" Justify-Content="Center" Text-Align="Center" SelectedValue='<%# Bind("Sex") %>' style="text-align: left;" Width="250px">
                                 <asp:ListItem>Select</asp:ListItem>
                                 <asp:ListItem>M</asp:ListItem>
                                 <asp:ListItem>F</asp:ListItem>
                                 <asp:ListItem>Other/Prefer not to answer</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DropDownListSex" ErrorMessage="RequiredFieldValidator" ForeColor="Red" InitialValue="Select" style="text-align: right">Required</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DropDownListSex" ErrorMessage="Required" ForeColor="Red" InitialValue="Select"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Sex") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Sex") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Sex") %>'></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Sex") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Phone Number" SortExpression="PhoneNum">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox6" runat="server" Font-Names="Montserrat" Text='<%# Bind("PhoneNum") %>' Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox6" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox4" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("PhoneNum") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("PhoneNum") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("PhoneNum") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("PhoneNum") %>'></asp:Label>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("PhoneNum") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Street Address" SortExpression="StreetAdd">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox7" runat="server" Font-Names="Montserrat" Text='<%# Bind("StreetAdd") %>' Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox7" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox5" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("StreetAdd") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StreetAdd") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("StreetAdd") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("StreetAdd") %>'></asp:Label>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("StreetAdd") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="City" SortExpression="City">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("City") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("City") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("City") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="State" SortExpression="StateAdd">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownListState" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="250px">
+                            <asp:DropDownList ID="DropDownListState" runat="server" Font-Names="Montserrat" Height="30px" Justify-Content="Center" Text-Align="Center" SelectedValue='<%# Bind("StateAdd") %>' style="text-align: left;" Width="250px">
                                 <asp:ListItem>Select State</asp:ListItem>
                                 <asp:ListItem>AL</asp:ListItem>
                                 <asp:ListItem>AK</asp:ListItem>
@@ -221,31 +242,31 @@
                                 <asp:ListItem>TX</asp:ListItem>
                                 <asp:ListItem>UT</asp:ListItem>
                                 <asp:ListItem>VT</asp:ListItem>
-                                <asp:ListItem>VI</asp:ListItem>
+                                <asp:ListItem>VA</asp:ListItem>
                                 <asp:ListItem>WA</asp:ListItem>
                                 <asp:ListItem>WV</asp:ListItem>
                                 <asp:ListItem>WI</asp:ListItem>
                                 <asp:ListItem>WY</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DropDownListState" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="DropDownListState" ErrorMessage="Required" ForeColor="Red" InitialValue="Select State"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("StateAdd") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StateAdd") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("StateAdd") %>'></asp:Label>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("StateAdd") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Email" SortExpression="Email">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox9" runat="server" Font-Names="Montserrat" Text='<%# Bind("Email") %>' Width="250px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBox9" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox7" runat="server" Font-Names="Montserrat" Height="30px" Text='<%# Bind("Email") %>' Width="250px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox7" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" />

@@ -158,7 +158,7 @@ function updatemenu() {
                     <nav id='menu'>
 			        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
 			            <ul>
-				            <li class="left"><a href="Login.aspx">Home</a></li>
+				            <li class="left"><a href="Login.aspx">Login</a></li>
 				            <li class="left"><a href="Register.aspx">New User</a></li>
 			            </ul>
 		            </nav>

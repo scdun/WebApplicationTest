@@ -292,7 +292,6 @@ namespace WebApplicationTest
             View5.Visible = true;
 
             conn.Close();
-
         }
     }
 }

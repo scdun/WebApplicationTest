@@ -11,14 +11,34 @@ namespace WebApplicationTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (Session["New"].ToString() == "Admin")
+            if (Session["New"] != null)
             {
-                LabelAdmin.Text = Session["New"].ToString();
+                if (Session["New"].ToString() == "Admin")
+                {
+                    LabelAdmin.Text = Session["New"].ToString();
+                    Panel1.Visible = true;
+                    Panel2.Visible = true;
+                }
+                else
+                {
+                    Response.Redirect("User.aspx");
+                }
             }
             else
             {
-                Response.Redirect("User.aspx");
-            }*/
+                Response.Redirect("Login.aspx");
+            }
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LabelUsername.Text = DropDownList2.SelectedItem.ToString();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            LabelUsername.Text = DropDownList2.SelectedItem.ToString();
+            Panel2.Visible = true;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="CalendarTest" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CalendarTest.aspx.cs" Inherits="WebApplicationTest.CalendarTest" %>
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <style>
-    html, body {
+        html, body {
         margin: 0;
         min-height: 100%;
         min-width: 100%;
