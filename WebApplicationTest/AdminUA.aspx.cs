@@ -40,5 +40,22 @@ namespace WebApplicationTest
             LabelUsername.Text = DropDownList2.SelectedItem.ToString();
             Panel2.Visible = true;
         }
+        
+        protected void DetailsView1_OnDeleting(object sender, DetailsViewDeleteEventArgs e)
+        {
+            Response.Redirect("AdminUA.aspx");
+        }
+        protected void DetailsView1_RowCommand(object sender, DetailsViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                Response.Redirect("AdminUA.aspx");
+            }
+        }
+
+        protected void OnRowUpdating(object sender, DetailsViewUpdateEventArgs e)
+        {
+            Response.Redirect("AdminUA.aspx");
+        }
     }
 }

@@ -273,7 +273,7 @@ namespace WebApplicationTest
             conn.Open();
 
             //Insertion query
-            string insertQuery = "INSERT INTO DocAppts (Doctor, Time, IsBooked, UserID, Date) values (@doctor, @time, @isbooked, @userid, @date)";
+            string insertQuery = "INSERT INTO DocAppts (Doctor, Time, IsBooked, UserID, Date, UserName) values (@doctor, @time, @isbooked, @userid, @date, @username)";
             SqlCommand insertCom = new SqlCommand(insertQuery, conn);
 
             insertCom.Parameters.AddWithValue("@doctor", LabelDoctor.Text);
@@ -281,6 +281,7 @@ namespace WebApplicationTest
             insertCom.Parameters.AddWithValue("@isbooked", "True");
             insertCom.Parameters.AddWithValue("@userid", LabelUserID.Text);
             insertCom.Parameters.AddWithValue("@date", LabelDate.Text);
+            insertCom.Parameters.AddWithValue("@username", LabelUNC.Text);
 
             insertCom.ExecuteNonQuery();
 

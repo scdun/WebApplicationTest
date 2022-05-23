@@ -26,10 +26,17 @@
         text-align:center;
         border: 2px solid #123875;
     }
-    .datetime {
-        margin-top:2%;
+    .confirm {
         justify-content:center;
         text-align:center;
+        border: 2px solid #123875;
+    }
+    .datetime {
+        
+        justify-content:center;
+        text-align:center;
+        border-right: 2px solid #123875;
+        border-left: 2px solid #123875;
     }
     .radioleft {
         justify-content:left;
@@ -106,8 +113,11 @@
                     </asp:Calendar>
                     <br />
                     <asp:Button ID="ButtonDate" runat="server" Text="Submit" OnClick="ButtonDate_Click" Font-Names="Montserrat SemiBold" Font-Size="Large" Height="35px" Width="90px" style="text-align: center; font-family: 'Montserrat SemiBold';" />
+                <br />
+                    <br />
                 </asp:Panel>
                 <asp:Panel ID="View3" runat="server" CssClass="inlineblockTime">
+                    <br />
                     <span class="timetitle">Please select a time.</span><br />
                     <br />
                     <asp:RadioButton ID="RadioButton9" runat="server" Text="9:00 AM" CausesValidation="True" GroupName="radiobuttons" />
@@ -126,13 +136,13 @@
                     <br />
                     <asp:Label ID="LabelRadio" runat="server" ForeColor="Red" Text="Please select a time" Visible="False"></asp:Label>
                     <br />
-                    <br />
                     <asp:Button ID="ButtonTime" runat="server" Text="Submit" OnClick="ButtonTime_Click" Font-Names="Montserrat SemiBold" Font-Size="Large" Height="35px" Width="90px" style="text-align: center; font-family: 'Montserrat SemiBold';" />
+                    <br />
                     <br />
                 </asp:Panel>
             </div>
             <asp:Panel ID="View4" runat="server">
-                <div class="head">
+                <div class="confirm">
                     <br />
                     If this information is correct, confirm appointment below.<br />
                     <br />
@@ -145,6 +155,7 @@
                     .<br />
                     <br />
                     <asp:Button ID="ButtonConfirm" runat="server" Text="Confirm" OnClick="ButtonConfirm_Click" Font-Names="Montserrat SemiBold" Font-Size="Large" Height="35px" Width="100px" style="text-align: center; font-family: 'Montserrat SemiBold';" />
+                    <br />
                     <br />
                 </div>
                </asp:Panel>

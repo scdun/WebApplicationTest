@@ -161,8 +161,8 @@ function updatemenu() {
 				<li class="left"><a href="Admin.aspx">Home</a></li>
 				<li class="left"><a class='dropdown-arrow' href="Admin.aspx">Admin</a>
 				<ul class='sub-menus'>
-					<li><a href="AdminAppts.aspx">User Appointments</a></li>
 					<li><a href="AdminUA.aspx">User Information</a></li>
+					<li><a href="AdminAppts.aspx">User Appointments</a></li>
 				</ul>
 				</li>
 				<li class="right"><a style="float:right;" href="Logout.aspx">Logout</a></li>

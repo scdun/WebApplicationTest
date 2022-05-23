@@ -44,7 +44,9 @@
     </style>
     <div class="bg-container">
     <div class="head">
-    <h2 class="titlelabel">
+    <br />
+        <br />
+        <h2 class="titlelabel">
     User Accounts
         <asp:Label ID="LabelAdmin" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:SqlDataSource ID="SqlDataSourceRegistration" runat="server" ConnectionString="<%$ ConnectionStrings:PPAdbConnectionString %>" SelectCommand="SELECT * FROM [UserData]" DeleteCommand="DELETE FROM [UserData] WHERE [UserID] = @UserID" InsertCommand="INSERT INTO [UserData] ([Username], [Password], [FirstName], [LastName], [DOB], [Sex], [PhoneNum], [StreetAdd], [StateAdd], [Email], [Role], [City]) VALUES (@Username, @Password, @FirstName, @LastName, @DOB, @Sex, @PhoneNum, @StreetAdd, @StateAdd, @Email, @Role, @City)" UpdateCommand="UPDATE [UserData] SET [Username] = @Username, [Password] = @Password, [FirstName] = @FirstName, [LastName] = @LastName, [DOB] = @DOB, [Sex] = @Sex, [PhoneNum] = @PhoneNum, [StreetAdd] = @StreetAdd, [StateAdd] = @StateAdd, [Email] = @Email, [Role] = @Role, [City] = @City WHERE [UserID] = @UserID">
@@ -122,7 +124,7 @@
     </h2>
         <asp:Panel ID="Panel1" runat="server">
             <br />
-            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceRegistration" DataTextField="Username" DataValueField="Username" Height="40px" Width="250px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Font-Size="Large" Font-Names="Montserrat SemiBold">
+            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceRegistration" DataTextField="Username" DataValueField="Username" Height="40px" Width="250px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Font-Size="Large" Font-Names="Montserrat SemiBold" AutoPostBack="True">
             </asp:DropDownList>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="Button1" runat="server" Font-Size="Large" Height="35px" OnClick="Button1_Click" Text="Submit" Width="100px" Font-Names="Montserrat SemiBold" />
@@ -136,7 +138,7 @@
             <br />
         </asp:Panel>
             <asp:Panel ID="Panel2" runat="server">
-                <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="UserID" DataSourceID="SqlDataSource1" Height="50px" Justify-Content="Center" HorizontalAlign="Center" CssClass="UserDetails" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60%">
+                <asp:DetailsView ID="DetailsView1" runat="server" OnRowCommand="DetailsView1_RowCommand" AutoGenerateRows="False" DataKeyNames="UserID" DataSourceID="SqlDataSource1" Height="50px" Justify-Content="Center" HorizontalAlign="Center" CssClass="UserDetails" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60%">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
                     <EditRowStyle BackColor="#999999" />

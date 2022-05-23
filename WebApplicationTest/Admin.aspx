@@ -16,6 +16,7 @@
     .bg-container {
             background-color: rgba(240, 248, 255, .6);
             margin: auto;
+            margin-top:8%;
             width: 60%;
             padding-bottom:20px;
     }

@@ -64,7 +64,6 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
         </asp:SqlDataSource>
     </h2>
 <p>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AdminUA.aspx">User Accounts</asp:HyperLink>
     </p>
 <p style="font-size: large; text-align: center;">
         Appointment Information</p>
@@ -77,8 +76,22 @@ LEFT JOIN UserData ON DocAppts.UserID=UserData.UserID" UpdateCommand="UPDATE [Do
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" >
                 <ControlStyle Font-Names="Montserrat SemiBold" Font-Size="18px" ForeColor="#000099" />
                 </asp:CommandField>
-                <asp:BoundField DataField="ApptID" HeaderText="ApptID" InsertVisible="False" ReadOnly="True" SortExpression="ApptID" />
-                <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" ReadOnly="True" />
+                <asp:TemplateField HeaderText="ApptID" InsertVisible="False" SortExpression="ApptID">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxApptID" runat="server" Font-Names="Montserrat" Height="30px" ReadOnly="True" style="text-align: left;" Text='<%# Bind("ApptID") %>' Width="180px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("ApptID") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="UserID" SortExpression="UserID">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxUserID" runat="server" Font-Names="Montserrat" Height="30px" ReadOnly="True" style="text-align: left;" Text='<%# Bind("UserID") %>' Width="180px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("UserID") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxFN" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" Width="180px" Text='<%# Bind("FirstName", "{0}") %>'></asp:TextBox>

@@ -19,10 +19,37 @@ namespace WebApplicationTest
             if (!IsPostBack)
             {
                 MultiView1.ActiveViewIndex = 0;
+                LabelUA.Visible = false;
+                LabelAvail.Visible = false;
             }
         }
+        protected void ButtonCU_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
 
-        protected void ButtonSubmit_Click(object sender, EventArgs e)
+            //Anytime you want to execute a query you need to open and later close the database. Think of them as curly braces
+            conn.Open();
+
+
+            //Checks if the inputted username already exists in database
+            string checkuser = "SELECT Count(*) FROM [UserData] WHERE Username='" + TextBoxUN.Text + "'";
+
+            //Command, uses the checkuse string and connection established above
+            SqlCommand com = new SqlCommand(checkuser, conn);
+
+            int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
+            if (temp == 0)
+            {
+                LabelAvail.Visible = true;
+                LabelUA.Visible = false;
+            }
+            else
+            {
+                LabelUA.Visible = true;
+                LabelAvail.Visible = false;
+            }
+        }
+            protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
             //WORKING
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPAdbConnectionString"].ConnectionString);
