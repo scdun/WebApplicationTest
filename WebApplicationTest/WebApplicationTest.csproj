@@ -132,7 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Login.aspx" />
-    <Content Include="CalendarTest.aspx" />
+    <Content Include="NewAppointment.aspx" />
     <Content Include="AdminAppts.aspx" />
     <Content Include="Login.Master" />
     <None Include="Properties\PublishProfiles\PPA488 - FTP.pubxml" />
@@ -295,12 +295,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CalendarTest.aspx.cs">
-      <DependentUpon>CalendarTest.aspx</DependentUpon>
+    <Compile Include="NewAppointment.aspx.cs">
+      <DependentUpon>NewAppointment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CalendarTest.aspx.designer.cs">
-      <DependentUpon>CalendarTest.aspx</DependentUpon>
+    <Compile Include="NewAppointment.aspx.designer.cs">
+      <DependentUpon>NewAppointment.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminAppts.aspx.cs">
       <DependentUpon>AdminAppts.aspx</DependentUpon>

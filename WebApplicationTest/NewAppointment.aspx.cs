@@ -150,37 +150,36 @@ namespace WebApplicationTest
                 }
 
                 //Checks if list contains values and disables radio buttons if it does
-                if (TimeList.Contains("9:00 AM"))
+                foreach (var t in TimeList)
                 {
-                    RadioButton9.Enabled = false;
-                }
-                else if (TimeList.Contains("10:00 AM"))
-                {
-                    RadioButton10.Enabled = false;
-                }
-                else if (TimeList.Contains("11:00 AM"))
-                {
-                    RadioButton11.Enabled = false;
-                }
-                else if (TimeList.Contains("12:00 AM"))
-                {
-                    RadioButton12.Enabled = false;
-                }
-                else if (TimeList.Contains("2:00 PM"))
-                {
-                    RadioButton2.Enabled = false;
-                }
-                else if (TimeList.Contains("3:00 PM"))
-                {
-                    RadioButton3.Enabled = false;
-                }
-                else if (TimeList.Contains("4:00 PM"))
-                {
-                    RadioButton4.Enabled = false;
-                }
-                else
-                {
-                    LabelRadio.Visible = false;
+                    if (t == "9:00 AM")
+                    {
+                        RadioButton9.Enabled = false;
+                    }
+                    if (t == "10:00 AM")
+                    {
+                        RadioButton10.Enabled = false;
+                    }
+                    if (t == "11:00 AM")
+                    {
+                        RadioButton11.Enabled = false;
+                    }
+                    if (t == "12:00 PM")
+                    {
+                        RadioButton12.Enabled = false;
+                    }
+                    if (t == "2:00 PM")
+                    {
+                        RadioButton2.Enabled = false;
+                    }
+                    if (t == "3:00 PM")
+                    {
+                        RadioButton3.Enabled = false;
+                    }
+                    if (t == "4:00 PM")
+                    {
+                        RadioButton4.Enabled = false;
+                    }
                 }
             }
             else

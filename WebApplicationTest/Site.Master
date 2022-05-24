@@ -163,7 +163,7 @@ function updatemenu() {
 							<li class="left"><a class='dropdown-arrow'>Appointments</a>
 								<ul class='sub-menus'>
 									<li class="submenu"><a href="UserAppts.aspx">Manage Appts</a></li>
-									<li class="submenu"><a href="CalendarTest.aspx">Set New Appt</a></li>
+									<li class="submenu"><a href="NewAppointment.aspx">Set New Appt</a></li>
 								</ul>
 							</li>
 						<li class="right"><a style="float:right;" href="Logout.aspx">Logout</a></li>
