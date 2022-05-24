@@ -14,7 +14,7 @@
             background-position: center center;
     }
     .bg-container {
-            background-color: rgba(240, 248, 255, .6);
+            background-color: rgba(240, 248, 255, .8);
             margin: auto;
             margin-top:8%;
             width: 60%;
@@ -69,12 +69,21 @@
 	position:relative;
 	top:1px;
 }
+    .titlelabel {
+        font-size:42px;
+        color:#123875;
+        font-family:Montserrat Semibold;
+        justify-content:center;
+        text-align: center;
+    }
 </style>
     <div class="bg-container">
         <br />
         <br />
+        <div class="titlelabel">
             <h1>Welcome Admin!<asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
         </h1>
+            </div>
         <div class="flex-container">
             <div class="left">
                 <a href="AdminUA.aspx" class="myButton">User Information</a>

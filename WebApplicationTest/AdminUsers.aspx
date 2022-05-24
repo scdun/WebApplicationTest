@@ -18,9 +18,11 @@
     .bg-container {
         font-family: Montserrat SemiBold;
         background-color: rgba(240, 248, 255, .8);
-        margin: auto;
-        width: 95%;
-        padding-bottom:20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
     .usergrid {
         font-family:Montserrat;
@@ -87,7 +89,10 @@
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="5" CellSpacing="1" CssClass="usergrid" DataKeyNames="UserID" DataSourceID="SqlDataSourceRegistration" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" >
+                            <ControlStyle Width="80px" />
+                            <HeaderStyle Width="40px" />
+                            </asp:CommandField>
                             <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" ReadOnly="True" SortExpression="UserID" />
                             <asp:TemplateField HeaderText="Username" SortExpression="Username">
                                 <EditItemTemplate>
@@ -258,7 +263,7 @@
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                         <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" Height="50px" />
                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" Font-Names="Montserrat" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#E9E7E2" />
                         <SortedAscendingHeaderStyle BackColor="#506C8C" />

@@ -53,7 +53,6 @@
             <br />
             <asp:Label ID="LabelUserFail" runat="server" Font-Names="Montserrat SemiBold" ForeColor="Red" Text="Username does not exist" Visible="False"></asp:Label>
             <br />
-            <br />
             <asp:Button ID="ButtonLogin" runat="server" Font-Names="Montserrat SemiBold" Font-Size="Large" Height="35px" style="text-align: center; font-family: 'Montserrat SemiBold';" Text="Login" Width="70px" OnClick="ButtonLogin_Click" />
             <br />
             <br />

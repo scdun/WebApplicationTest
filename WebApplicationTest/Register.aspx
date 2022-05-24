@@ -39,22 +39,21 @@
             margin-bottom: 15px;
         }
         .submitsection {
-            margin-left: 20%;
+            margin-left: 30%;
+            justify-content: center;
         }
             .auto-style14 {
                 font-size: xx-large;
             }
             .auto-style15 {
-                text-align: left;
-                margin-left: 13%;
-                margin-right: 13%;                
+                text-align: center;
                 font-size: 50px;
             }
             .auto-style16 {
                 font-size: large;
                 font-weight: 300;
                 line-height: 1.4;
-                text-align: left;
+                text-align: center;
                 margin-left: 13%;
                 margin-right: 13%;
                 margin-bottom: 15px;
@@ -103,7 +102,7 @@
                 <h1 style="font-family: 'Montserrat Black'" class="text-left">&nbsp;</h1>
                 <h1 class="auto-style15" style="font-family: 'Montserrat Black'"><em>Welcome!</em></h1>
                 <p class="auto-style16" style="font-family: 'Montserrat SemiBold'">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please register below</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please register below</p>
                 <div class="center">
                     <table class="auto-style17">
                         <tr>
@@ -151,10 +150,11 @@
                                                 <tr>
                             <td class="auto-style39">
                                 <br />
-                                Email:<br /> </td>
+                                Email:<br /> <br /> </td>
                             <td class="auto-style31">
                                 <br />
                                 <asp:TextBox ID="TextBoxEmail" runat="server" Height="30px" style="text-align: left;" TextMode="Email" Width="180px" Font-Names="Montserrat"></asp:TextBox>
+                                <br />
                                 <br />
                             </td>
                                                     <td class="auto-style24">
@@ -275,6 +275,7 @@
                                 Phone Number:<br /> <br /> </td>
                             <td class="auto-style30">
                                 <asp:TextBox ID="TextBoxPhone" runat="server" Height="30px" style="text-align: left;" TextMode="Phone" Width="180px" Font-Names="Montserrat"></asp:TextBox>
+                                <br />
                             </td>
                                                     <td class="auto-style23">
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBoxPhone" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -284,7 +285,7 @@
                                                 <tr>
                             <td class="auto-style39">
                                 <br />
-                                Date of Birth:<br /> </td>
+                                Date of Birth:<br /> <br /> </td>
                             <td class="auto-style30">
                                 <asp:TextBox ID="TextBoxDOB" runat="server" Font-Names="Montserrat" Height="30px" style="text-align: left;" TextMode="Date" Width="180px"></asp:TextBox>
                             </td>
@@ -325,10 +326,7 @@
                 <div class="center">
                     <span class="submitsection">
                     <asp:Label ID="LabelFail" runat="server" Text="Label" Visible="False"></asp:Label>
-                    </span>
-                    <br />
-                    <br />
-                    <span class="submitsection">
+                        <br />
                     <asp:Button ID="ButtonSubmit" runat="server" OnClick="ButtonSubmit_Click" Text="Submit" Font-Names="montserrat semibold" Font-Size="Large" Height="50px" Width="116px" />
                     </span>
                     <br />

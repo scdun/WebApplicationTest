@@ -176,7 +176,6 @@ function updatemenu() {
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <footer class="footer">
-                <p>&copy; <%: DateTime.Now.Year %> - Patient Portal version 3</p>
             </footer>
         </div>
     </form>
